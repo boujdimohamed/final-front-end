@@ -5,7 +5,7 @@ import { Pencil, Trash2, Calendar, Clock, Tag as TagIcon, Users, AlertCircle, Ch
 import LetterAvatar from './LettreAvatar';
 import ConfirmationModal from './ConfirmationModal';
 import Task from '../models/Task';
-import tagColorMapping from '../utils/TagcolorsConfig';
+import { getTagColor } from '../utils/TagcolorsConfig';
 
 const statusConfig = {
     'todo': { color: 'gray', icon: Circle },
@@ -143,7 +143,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ task, onEdit, onDelete}) =>
                 key={index}
                 size="sm"
                 variant="subtle"
-                colorScheme={tagColorMapping[tag.label] || 'gray'}
+                colorScheme={getTagColor(tag.label) || 'gray'}
               >
                 <TagLeftIcon as={TagIcon} boxSize="12px" />
                 <TagLabel>{tag.label}</TagLabel>

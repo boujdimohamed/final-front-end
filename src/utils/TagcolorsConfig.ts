@@ -1,24 +1,16 @@
-const tagColorMapping: { [key: string]: string } = {
-    Frontend: 'blue',
-    Backend: 'green',
-    API: 'orange',
-    'UI/UX': 'purple',
-    Database: 'red',
-    DevOps: 'yellow',
-    Security: 'teal',
-    Integration: 'cyan',
-    Authentication: 'pink',
-    Performance: 'cryn',
-    Testing: 'gray',
-    Cloud: 'blue',
-    Microservices: 'purple',
-    Deployment: 'green',
-    'Bug Fixing': 'red',
-    'Design System': 'purple',
-    'Code Review': 'orange',
-    Documentation: 'blue',
-    Refactoring: 'yellow',
-    Monitoring: 'teal',
-  };
 
-  export default tagColorMapping;
+const tagColorMap: { [key: string]: string } = {};
+
+const getRandomColor = () => {
+  const colors = ['blue', 'green', 'orange', 'purple', 'red', 'yellow', 'teal', 'cyan', 'pink', 'gray'];
+  return colors[Math.floor(Math.random() * colors.length)];
+};
+
+const getTagColor = (tag: string) => {
+  if (!tagColorMap[tag]) {
+    tagColorMap[tag] = getRandomColor();
+  }
+  return tagColorMap[tag];
+};
+
+export { getTagColor };
